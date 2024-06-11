@@ -26,6 +26,8 @@ set(LIBS
 set(SOURCES
   ${SRC}/main.cpp
   ${SRC}/MainWindow.cpp
+  ${SRC}/Screen.cpp
+  ${SRC}/Keyboard.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

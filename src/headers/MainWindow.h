@@ -1,16 +1,15 @@
 #pragma once
 #include <wx/wx.h>
 
-enum
-{
-  ID_Hello = 1
-};
+class Screen;
+class Keyboard;
 
 class MainWindow : public wxFrame {
 public:
+  Screen *m_screen;
+  Keyboard *m_keyboard;
+  wxPanel *m_parent;
   MainWindow();
 private:
   void OnExit(wxCommandEvent &event);
-  void OnHi(wxCommandEvent &event);
-  void OnAbout(wxCommandEvent &event);
 };

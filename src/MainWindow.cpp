@@ -1,42 +1,23 @@
 #include "MainWindow.h"
 #include <iostream>
+#include "Screen.h"
+#include "Keyboard.h"
 
 
-MainWindow::MainWindow() : wxFrame(0, wxID_ANY, "SmartCalculator") {
-  Bind(wxEVT_MENU, &MainWindow::OnExit, this, wxID_EXIT);
-  Bind(wxEVT_MENU, &MainWindow::OnAbout, this, wxID_ABOUT);
-  Bind(wxEVT_MENU, &MainWindow::OnHi, this, ID_Hello);
-
-
-
-    wxMenu *menuFile = new wxMenu;
-    menuFile->Append(ID_Hello, "&Hello...\tCtrl+F",
-                     "Help string shown in status bar for this menu item");
-    menuFile->AppendSeparator();
-    menuFile->Append(wxID_EXIT);
- 
-    wxMenu *menuHelp = new wxMenu;
-    menuHelp->Append(wxID_ABOUT);
- 
-    wxMenuBar *menuBar = new wxMenuBar;
-    menuBar->Append(menuFile, "&File");
-    menuBar->Append(menuHelp, "&Help");
- 
-    SetMenuBar(menuBar);
- 
-    CreateStatusBar();
-    SetStatusText("Welcome to wxWidgets!");
+MainWindow::MainWindow() : 
+  wxFrame(0, wxID_ANY, "SmartCalculator")
+{
+  m_parent = new wxPanel(this, wxID_ANY);
+  m_screen = new Screen(m_parent);
+  m_keyboard = new Keyboard(m_parent);
+  wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
+  sizer->Add(m_screen, 1, wxEXPAND | wxALL, 5);
+  sizer->Add(m_keyboard, 1, wxEXPAND | wxALL, 5);
+  m_parent->SetSizer(sizer);
+  Centre();
 }
 
 
 void MainWindow::OnExit(wxCommandEvent& event) {
   Close(true);
-}
-
-void MainWindow::OnAbout(wxCommandEvent& event) {
-  wxMessageBox("This is Elon Mask, CEO of SpaceX");
-}
-
-void MainWindow::OnHi(wxCommandEvent& event) {
-  wxMessageBox("HI");
 }
