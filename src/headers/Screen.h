@@ -7,4 +7,6 @@ private:
 public: 
   Screen(wxPanel *parent);
   void OnSetText(wxCommandEvent& event);
+  void addText(wxString text);
+
 };

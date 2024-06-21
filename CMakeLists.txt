@@ -28,6 +28,7 @@ set(SOURCES
   ${SRC}/MainWindow.cpp
   ${SRC}/Screen.cpp
   ${SRC}/Keyboard.cpp
+  ${SRC}/CalcLetterChecker.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
